@@ -1,15 +1,16 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    }
+  "name": "RIFEx - RIF Extension",
+  "version": "0.0.1",
+  "description": "Be part of the RIF revolution ! This extension will allow you to interact with all the RIF Services from your browser.",
+  "permissions": [
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "icons": { 
+    "16": "rif_16.png",
+    "48": "rif_48.png",
+    "128": "rif_128.png" },
+  "browser_action": {
+    "default_icon": "rif_16.png",
+    "default_popup": "popup.html"
+  },
+  "manifest_version": 2
 }
