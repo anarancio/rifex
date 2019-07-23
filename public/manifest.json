@@ -10,7 +10,7 @@
     "128": "rif_128.png" },
   "browser_action": {
     "default_icon": "rif_16.png",
-    "default_popup": "popup.html"
+    "default_popup": "index.html"
   },
   "manifest_version": 2
 }
