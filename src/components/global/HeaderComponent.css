@@ -1,0 +1,8 @@
+.HeaderComponent {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.HeaderComponent .logo {
+    height: 60px;
+}
