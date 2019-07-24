@@ -14,7 +14,6 @@ class HeaderComponent extends React.Component {
         return (
             <div className="HeaderComponent">
                 <img className="logo" src="./rif.svg" /><br />
-                <h1 style={pStyle}>TEST______!!!</h1> 
             </div>
         );
     }
