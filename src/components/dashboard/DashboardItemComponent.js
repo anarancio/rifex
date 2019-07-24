@@ -6,9 +6,13 @@ class DashboardComponent extends React.Component {
 
     render() {
         return (
-            <div className="DashboardItemComponent">
-                {this.props.title}
-                <i className={this.props.icon}></i>
+            <div className="DashboardItemComponent">                
+                <div className="icon">
+                    <i className={this.props.icon}></i>
+                </div>
+                <div className="title">
+                    {this.props.title}
+                </div>                
             </div>
         );
     }
