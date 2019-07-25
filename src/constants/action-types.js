@@ -1,0 +1,1 @@
+export const GO_TO_WALLET = "GO_TO_WALLET";

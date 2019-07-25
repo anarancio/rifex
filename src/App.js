@@ -1,18 +1,24 @@
 import React from 'react';
+import { connect } from "react-redux";
 
-import logo from './logo.svg';
 import './App.css';
 
 import HeaderComponent from './components/global/HeaderComponent.js';
 import DashboardComponent from './components/dashboard/DashboardComponent.js';
 
-function App() {
+const App = (props) => {
+  const {selectedPage} = props;
   return (
     <div className="App">
       <HeaderComponent />
+      <div>aaa{selectedPage}</div>
       <DashboardComponent />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return { selectedPage: state.global.selectedPage };
+};
+
+export default connect(mapStateToProps)(App);
