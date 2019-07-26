@@ -10,6 +10,24 @@ class DashboardComponent extends React.Component {
         return (
             <div className="DashboardComponent">
                 <div class='row'>
+                    <div class='column left'>
+                        <div className="balance-rbtc">
+                            0.00 RBTC
+                        </div>
+                        <div className="balance-usd">
+                            (0.00 USD)
+                        </div>
+                    </div>
+                    <div class='column right'>
+                        <div className="balance-rif">
+                            0.00 RIF
+                        </div>
+                        <div className="balance-usd">
+                            (0.00 USD)
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
                     <div class='column'>
                         <DashboardItemComponent title="My Wallet" icon="fas fa-wallet" />
                         <DashboardItemComponent title="Lumino" icon="fas fa-bolt" />
