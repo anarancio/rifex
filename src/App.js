@@ -8,21 +8,40 @@ import './App.css';
 import HeaderComponent from './components/global/HeaderComponent.js';
 import DashboardComponent from './components/dashboard/DashboardComponent.js';
 
-const App = (props) => {
-  const {selectedPage} = props;
+import {openWeb3Provider} from './actions/web3';
 
-  let component = <DashboardComponent />;  
+class App extends React.Component {
 
-  return (
-    <div className="App">
-      <HeaderComponent />
-      {component}
-    </div>
-  );
+  componentDidMount() {
+    this.props.openWeb3();
+  }
+
+  render() {
+    const {selectedPage, web3provider} = this.props;
+    let component = <DashboardComponent />;  
+    console.log("app.js");
+    console.log(web3provider);
+
+    return (
+      <div className="App">
+        <HeaderComponent />
+        {component}
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => {
-  return { selectedPage: state.global.selectedPage };
+  return { 
+    selectedPage: state.global.selectedPage,
+    web3provider: state.web3.provider
+   };
 };
 
-export default connect(mapStateToProps)(App);
+function mapDispatchToProps(dispatch) {
+  return {
+    openWeb3: () => dispatch(openWeb3Provider())
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

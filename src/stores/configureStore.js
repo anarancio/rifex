@@ -1,5 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 import thunkMiddleware from 'redux-thunk'
+import { createLogicMiddleware } from 'redux-logic';
+import arrLogic from '../logic';
 
 //import monitorReducersEnhancer from './enhancers/monitorReducers'
 //import loggerMiddleware from './middleware/logger'
@@ -12,7 +14,15 @@ export default function configureStore(preloadedState) {
   */
 
   //const enhancers = [middlewareEnhancer, monitorReducersEnhancer]
-  const enhancers = []
+
+  const deps = { 
+  };
+  
+  const logicMiddleware = createLogicMiddleware(arrLogic, deps);
+  const middlewares = [logicMiddleware];
+  const middlewareEnhancer = applyMiddleware(...middlewares)
+
+  const enhancers = [middlewareEnhancer]
   const composedEnhancers = compose(...enhancers)
 
   const store = createStore(rootReducer, preloadedState, composedEnhancers)

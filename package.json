@@ -8,6 +8,7 @@
     "react-redux": "^7.1.0",
     "react-scripts": "3.0.1",
     "redux": "^4.0.4",
+    "redux-logic": "^2.1.1",
     "redux-thunk": "^2.3.0",
     "web3": "^1.2.0"
   },
