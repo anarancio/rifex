@@ -4,9 +4,18 @@ import './DashboardItemComponent.css';
 
 class DashboardComponent extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.executeAction = this.executeAction.bind(this)
+    }
+
+    executeAction() {
+        this.props.action();
+    }
+
     render() {
         return (
-            <div className="DashboardItemComponent">                
+            <div className="DashboardItemComponent" onClick={this.executeAction}>                
                 <div className="icon">
                     <i className={this.props.icon}></i>
                 </div>

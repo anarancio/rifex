@@ -1,7 +1,10 @@
 import React from 'react';
+import { connect } from "react-redux";
 
 import DashboardItemComponent from './DashboardItemComponent.js';
 import RbtcBalanceComponent from './RbtcBalanceComponent.js';
+
+import { goToRnsDashboard } from '../../actions/navigation';
 
 import './DashboardComponent.css';
 
@@ -29,7 +32,7 @@ class DashboardComponent extends React.Component {
                         <DashboardItemComponent title="Lumino" icon="fas fa-bolt" />
                     </div>
                     <div class='column'>
-                        <DashboardItemComponent title="RNS" icon="fas fa-id-card" />                        
+                        <DashboardItemComponent title="RNS" icon="fas fa-id-card" action={this.props.goToRnsDashboard} />                        
                         <DashboardItemComponent title="Storage" icon="fas fa-database" />
                     </div>
                 </div>
@@ -39,4 +42,15 @@ class DashboardComponent extends React.Component {
 
 }
 
-export default DashboardComponent;
+const mapStateToProps = state => {
+    return { 
+     };
+  };
+  
+  function mapDispatchToProps(dispatch) {
+    return {
+        goToRnsDashboard: () => dispatch(goToRnsDashboard())
+    };
+  }
+
+  export default connect(mapStateToProps, mapDispatchToProps)(DashboardComponent);

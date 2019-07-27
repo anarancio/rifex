@@ -5,8 +5,10 @@ import './App.css';
 
 import HeaderComponent from './components/global/HeaderComponent.js';
 import DashboardComponent from './components/dashboard/DashboardComponent.js';
+import RnsDashboardComponent from './components/rns/RnsDashboardComponent';
 
 import {openWeb3Provider, getWalletBalance} from './actions/web3';
+import {RNS_DASHBOARD_PAGE} from './constants/pages';
 
 class App extends React.Component {
 
@@ -30,6 +32,9 @@ class App extends React.Component {
   render() {
     const {selectedPage, web3provider} = this.props;
     let component = <DashboardComponent />;  
+    if (selectedPage == RNS_DASHBOARD_PAGE) {
+      component = <RnsDashboardComponent />;
+    }
 
     return (
       <div className="App">

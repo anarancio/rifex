@@ -1,4 +1,5 @@
 export const GO_TO_WALLET = "GO_TO_WALLET";
+export const GO_TO_RNS_DASHBOARD = "GO_TO_RNS_DASHBOARD";
 
 export const WEB3_PROVIDER_OPENED = "WEB3_PROVIDER_OPENED";
 
