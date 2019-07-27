@@ -10,11 +10,16 @@ class RbtcBalanceComponent extends React.Component {
     }
 
     render() {
-        const {balance} = this.props;
+        const {balance, web3} = this.props;
+        let balanceInRBTC = 0;
+        if(web3) {
+            balanceInRBTC = web3.utils.fromWei(balance.toString(), 'ether');
+        }
+
         return (
             <div className="RbtcBalanceComponent">
                 <div className="balance-rbtc">
-                    {balance} RBTC
+                    {balanceInRBTC} RBTC
                 </div>
                 <div className="balance-usd">
                     (0.00 USD)
@@ -28,6 +33,7 @@ class RbtcBalanceComponent extends React.Component {
 const mapStateToProps = state => {
     return { 
         balance: state.wallet.rbtc.balance,
+        web3: state.web3.provider,
      };
   };
 

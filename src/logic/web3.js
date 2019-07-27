@@ -29,11 +29,9 @@ const openWeb3 = createLogic({
 const getBalance = createLogic({
     type: GET_BALANCE_TIMER,
     process({getState, action}, dispatch, done) {
-        console.log(getState());
         (async () => {
             let web3 = getState().web3.provider;
             let theBalance = await web3.eth.getBalance('0xab0C430E89303ac6E0cfF41FAe778713086c8cF0'); 
-            console.log(theBalance);
             dispatch(updateRbtcBalance({
                 balance: theBalance,
                 lastUpdate: new Date().valueOf()

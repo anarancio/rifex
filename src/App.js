@@ -19,7 +19,6 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log("component did update!!");
     if(prevProps.lastRbtcBalanceUpdate != this.rbtcLastUpdate) {
       setTimeout(() => {
         this.props.walletBalance()
@@ -31,8 +30,6 @@ class App extends React.Component {
   render() {
     const {selectedPage, web3provider} = this.props;
     let component = <DashboardComponent />;  
-    console.log("app.js");
-    console.log(web3provider);
 
     return (
       <div className="App">

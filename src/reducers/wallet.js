@@ -9,8 +9,6 @@ const initialState = {
 }
 const wallet = (state = initialState, action) => {
     //TODO we must make the state immutable
-    console.log("reducer")
-    console.log(action);
     switch (action.type) {
       case UPDATE_RBTC_BALANCE:
           return {
