@@ -10,6 +10,7 @@
     "redux": "^4.0.4",
     "redux-logic": "^2.1.1",
     "redux-thunk": "^2.3.0",
+    "redux-timer-middleware": "^1.0.0",
     "web3": "^1.2.0"
   },
   "scripts": {

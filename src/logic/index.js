@@ -1,5 +1,5 @@
-import loadWeb3 from './loadWeb3';
+import web3 from './web3';
 
 export default [
-    ...loadWeb3
+    ...web3
 ];

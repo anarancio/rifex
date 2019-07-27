@@ -1,6 +1,7 @@
 import React from 'react';
 
 import DashboardItemComponent from './DashboardItemComponent.js';
+import RbtcBalanceComponent from './RbtcBalanceComponent.js';
 
 import './DashboardComponent.css';
 
@@ -11,12 +12,7 @@ class DashboardComponent extends React.Component {
             <div className="DashboardComponent">
                 <div class='row'>
                     <div class='column left'>
-                        <div className="balance-rbtc">
-                            0.00 RBTC
-                        </div>
-                        <div className="balance-usd">
-                            (0.00 USD)
-                        </div>
+                        <RbtcBalanceComponent />
                     </div>
                     <div class='column right'>
                         <div className="balance-rif">

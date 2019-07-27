@@ -1,0 +1,12 @@
+.RbtcBalanceComponent .balance-rbtc {
+    color: green;
+    font-family: 'helvetica';
+    font-size: 20px; 
+    font-weight: bold;
+  }
+
+  .RbtcBalanceComponent .balance-usd {
+    color: white;
+    font-size: 15px; 
+    font-family: 'helvetica';
+  }
