@@ -7,7 +7,12 @@ class RnsDashboardComponent extends React.Component {
     render() {
         return (
             <div className="RnsDashboardComponent">
-                RNS
+                <input 
+                    type="text"
+                    className="searchBox"
+                    placeholder="search domain" />
+                <button
+                    className="btnSearch">Search</button>
             </div>
         );
     }
