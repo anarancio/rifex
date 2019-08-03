@@ -9,3 +9,4 @@ export const SAVE_WEB3 = "SAVE_WEB3";
 export const GET_BALANCE_TIMER = "GET_BALANCE_TIMER";
 export const UPDATE_BALANCE = "UPDATE_BALANCE";
 export const UPDATE_RBTC_BALANCE = "UPDATE_RBTC_BALANCE";
+export const RNS_CHECK = "RNS_CHECK";
