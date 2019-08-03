@@ -6,3 +6,7 @@
 .HeaderComponent .logo {
     height: 100px;
 }
+
+.HeaderComponent .logoRNS {
+    height: 60px;
+}

@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from "react-redux";
+
+import {RNS_DASHBOARD_PAGE} from '../../constants/pages';
 
 import './HeaderComponent.css';
 
@@ -11,13 +14,24 @@ const pStyle = {
 class HeaderComponent extends React.Component {
 
     render() {
+        const {selectedPage} = this.props;
+        let logoSrc = <img className="logo" src="./rif.svg" />;
+        if (selectedPage == RNS_DASHBOARD_PAGE) {
+            logoSrc = <img className="logoRNS" src="./rns.png" />;
+        }
         return (
             <div className="HeaderComponent">
-                <img className="logo" src="./rif.svg" /><br />
+                {logoSrc}<br />
             </div>
         );
     }
 
 }
 
-export default HeaderComponent;
+const mapStateToProps = state => {
+    return { 
+      selectedPage: state.global.selectedPage
+     };
+  };
+
+export default connect(mapStateToProps)(HeaderComponent);
