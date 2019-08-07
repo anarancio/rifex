@@ -35,6 +35,9 @@ class DashboardComponent extends React.Component {
                         <DashboardItemComponent title="RNS" icon="fas fa-id-card" action={this.props.goToRnsDashboard} />                        
                         <DashboardItemComponent title="Storage" icon="fas fa-database" />
                     </div>
+                    <div class='column'>
+                        <DashboardItemComponent title="Marketplace" icon="fas fa-store" />
+                    </div>
                 </div>
             </div>
         );
