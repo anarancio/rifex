@@ -1,7 +1,9 @@
 import { createLogic } from 'redux-logic';
 import { LOAD_WEB3,  GET_BALANCE_TIMER, RNS_CHECK } from "../constants/action-types";
 import Web3 from 'web3';
-import {saveWeb3Provider, updateRbtcBalance} from "../actions/web3"
+import namehash from 'eth-ens-namehash';
+
+import {saveWeb3Provider, updateRbtcBalance, checkRnsOwnerResult} from "../actions/web3"
 import rnsRegistryABI from "../abis/RNS";
 
 const openWeb3 = createLogic({
@@ -37,7 +39,16 @@ const getBalance = createLogic({
 const checkRNS = createLogic({
     type: RNS_CHECK,
     process({getState, action}, dispatch, done) {
-        console.log(action)
+        (async () => {
+            let domainHash = namehash.hash(action.domain)
+            let contract = getState().web3.contracts.rns.registry;
+            let domainOwner = await contract.methods.owner(domainHash).call()
+            dispatch(checkRnsOwnerResult({
+                name: action.domain,
+                owner: domainOwner
+            }))
+            done()
+        })();
     }
 });
 
