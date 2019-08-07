@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import {checkRns} from '../../actions/web3';
 
+import RnsDomainDetailComponent from './RnsDomainDetailComponent'
+
 import './RnsDashboardComponent.css';
 
 class RnsDashboardComponent extends React.Component {
@@ -27,13 +29,18 @@ class RnsDashboardComponent extends React.Component {
     render() {
         return (
             <div className="RnsDashboardComponent">
-                <input 
-                    type="text"
-                    className="searchBox"
-                    placeholder="search domain" 
-                    onChange={this.handleChange} />
-                <button
-                    className="btnSearch" onClick={this.searchDomain}>Search</button>
+                <div>
+                    <input 
+                        type="text"
+                        className="searchBox"
+                        placeholder="search domain" 
+                        onChange={this.handleChange} />
+                    <button
+                        className="btnSearch" onClick={this.searchDomain}>Search</button>
+                </div>
+                <div>
+                    <RnsDomainDetailComponent />
+                </div>
             </div>
         );
     }

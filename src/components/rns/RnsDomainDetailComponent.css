@@ -1,0 +1,40 @@
+.RnsDomainDetailComponent {
+    color: white;
+}
+
+.RnsDomainDetailComponent .domainName {
+    margin-top: 10px;
+    font-size: 20px;
+    text-align: center;
+    color: #00C6B1;
+    margin-bottom: 10px;
+}
+
+.RnsDomainDetailComponent .domainOwner {
+    color: white;
+    background-color: #00c6b1;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+.RnsDomainDetailComponent .bold {
+    font-weight: bold;
+}
+
+.RnsDomainDetailComponent .small-font {
+    font-size: 12px;
+}
+
+.RnsDomainDetailComponent .domainAvailable {
+    color: white;
+    background-color: #D43725;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
