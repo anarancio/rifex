@@ -4,9 +4,10 @@ export const openWeb3Provider = () => ({
     type: LOAD_WEB3
 });
 
-export const saveWeb3Provider = (web3) => ({
+export const saveWeb3Provider = (web3, contracts) => ({
     type: SAVE_WEB3,
-    web3
+    web3,
+    contracts
 });
 
 export const getWalletBalance = () => ({

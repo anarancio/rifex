@@ -9,7 +9,8 @@ const web3 = (state = initialState, action) => {
     switch (action.type) {
       case SAVE_WEB3:
           return {
-              provider: action.web3
+              provider: action.web3,
+              contracts: action.contracts
           };
       default:
         return state
