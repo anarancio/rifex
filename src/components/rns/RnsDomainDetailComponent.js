@@ -22,12 +22,19 @@ class RnsDomainDetailComponent extends React.Component {
                 </div>
             }
         }
+
+        let resolverDiv = <div></div>
+        if (this.props.resolver != '') {
+            resolverDiv = <div>{this.props.resolver}</div>
+        }
+
         return (
             <div className="RnsDomainDetailComponent">
                 <div className="domainName">
                     {this.props.domain}
                 </div>
                 {ownedBy}
+                {resolverDiv}
             </div>
         );
     }
@@ -38,6 +45,7 @@ const mapStateToProps = state => {
     return { 
         domain: state.rns.domain,
         owner: state.rns.owner,
+        resolver: state.rns.resolver,
      };
   };
 

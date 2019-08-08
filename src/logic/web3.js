@@ -11,7 +11,7 @@ const openWeb3 = createLogic({
   process({getState, action}, dispatch, done) {
       //TODO move the node url to a config file
     let web3 = new Web3(Web3.givenProvider || "http://localhost:9545");
-    let rnsRegistryContract = new web3.eth.Contract(rnsRegistryABI, '0xb2687b0AABD310145424E6134561e8c08E3efC99');
+    let rnsRegistryContract = new web3.eth.Contract(rnsRegistryABI, '0xa70Ed6026c0481D0d6Af2d907347Ba8aD397F461');
     dispatch(saveWeb3Provider(web3, {
         rns: {
             registry: rnsRegistryContract
@@ -45,7 +45,8 @@ const checkRNS = createLogic({
             let domainOwner = await contract.methods.owner(domainHash).call()
             dispatch(checkRnsOwnerResult({
                 name: action.domain,
-                owner: domainOwner
+                owner: domainOwner,
+                hash: domainHash,
             }))
             done()
         })();
