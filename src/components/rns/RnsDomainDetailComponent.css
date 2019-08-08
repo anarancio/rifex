@@ -40,6 +40,24 @@
 }
 .RnsDomainDetailComponent .domainResolver {
     margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.resolver-select .resolver-select__control {
+    background-color: #5a5658;
+    border: none;
+    border-radius: 20px;
+}
+
+.resolver-select .resolver-select__option {
+    color: #5a5658;
+}
+
+.resolver-select .resolver-select__placeholder {
+    color: white;
+}
+
+.resolver-select .resolver-select__single-value {
+    color: white;
 }
