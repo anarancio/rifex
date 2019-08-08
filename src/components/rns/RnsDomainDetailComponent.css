@@ -38,3 +38,8 @@
     font-size: 15px;
     font-weight: bold;
 }
+.RnsDomainDetailComponent .domainResolver {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}

@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from "react-redux";
 
+import {ADDRESS_EMPTY} from '../../constants/global'
+
 import './RnsDomainDetailComponent.css';
 
 class RnsDomainDetailComponent extends React.Component {
@@ -10,11 +12,15 @@ class RnsDomainDetailComponent extends React.Component {
     }
 
     render() {
+        const {domain, owner, resolver} = this.props;
+
+        let resolverText = 'Not assigned'
+
         let ownedBy = <div></div>
-        if (this.props.owner != '') {
-            if (this.props.owner != '0x0000000000000000000000000000000000000000') {
+        if (owner != '') {
+            if (owner != ADDRESS_EMPTY) {
                 ownedBy = <div className="domainOwner">
-                            <span className="bold">Owned by:</span> <span className="small-font">{this.props.owner}</span>
+                            <span className="bold">Owned by:</span> <span className="small-font">{owner}</span>
                         </div>
             } else {
                 ownedBy = <div className="domainAvailable">
@@ -23,18 +29,13 @@ class RnsDomainDetailComponent extends React.Component {
             }
         }
 
-        let resolverDiv = <div></div>
-        if (this.props.resolver != '') {
-            resolverDiv = <div>{this.props.resolver}</div>
-        }
-
         return (
             <div className="RnsDomainDetailComponent">
                 <div className="domainName">
-                    {this.props.domain}
+                    {domain}
                 </div>
                 {ownedBy}
-                {resolverDiv}
+                <div className="domainResolver">{resolverText}</div>
             </div>
         );
     }
