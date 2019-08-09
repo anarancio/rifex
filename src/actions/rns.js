@@ -1,8 +1,13 @@
-import { RNS_DOMAIN_RESOLVER_CHECKED, RNS_DOMAIN_SET_RESOLVER, RNS_DOMAIN_SET_RESOLVER_DONE } from "../constants/action-types";
+import { RNS_DOMAIN_RESOLVER_CHECKED, RNS_DOMAIN_SET_RESOLVER, RNS_DOMAIN_SET_RESOLVER_DONE, RNS_DOMAIN_ADDR_RECEIVED } from "../constants/action-types";
 
 export const rnsDomainResolverChecked = (resolver) => ({
     type: RNS_DOMAIN_RESOLVER_CHECKED,
     resolver
+});
+
+export const rnsDomainAddrReceived = (addr) => ({
+    type: RNS_DOMAIN_ADDR_RECEIVED,
+    addr
 });
 
 export const rnsSetDomainResolver = (data) => ({

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 
 import {checkRns} from '../../actions/web3';
+import { RNS_DOMAIN_DETAIL } from "../../constants/action-types";
 
 import RnsDomainDetailComponent from './RnsDomainDetailComponent'
 
@@ -27,6 +28,12 @@ class RnsDashboardComponent extends React.Component {
     }
 
     render() {
+        let page = <div></div>
+        if (this.props.pageDisplayed == RNS_DOMAIN_DETAIL) {
+            page = <div>
+                        <RnsDomainDetailComponent />
+                    </div>
+        }
         return (
             <div className="RnsDashboardComponent">
                 <div>
@@ -38,9 +45,7 @@ class RnsDashboardComponent extends React.Component {
                     <button
                         className="btnSearch" onClick={this.searchDomain}>Search</button>
                 </div>
-                <div>
-                    <RnsDomainDetailComponent />
-                </div>
+                {page}
             </div>
         );
     }
@@ -49,6 +54,7 @@ class RnsDashboardComponent extends React.Component {
 
 const mapStateToProps = state => {
     return { 
+        pageDisplayed: state.rns.pageDisplayed
      };
   };
 

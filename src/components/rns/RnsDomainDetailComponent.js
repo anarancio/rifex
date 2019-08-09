@@ -23,13 +23,16 @@ class RnsDomainDetailComponent extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            editingAddr: false
+        };
+
         this.onChange = this.onChange.bind(this)
         this.getResolverOption = this.getResolverOption.bind(this)
     }
 
     onChange(evt) {
-        console.log("onchange!!!")
-        console.log(evt)
         this.props.setDomainResolver({
             domain: this.props.domain,
             hash: this.props.hash,
@@ -51,9 +54,7 @@ class RnsDomainDetailComponent extends React.Component {
     }
 
     render() {
-        const {domain, owner, resolver} = this.props;     
-        console.log("RENDER RNS")  
-        console.log(resolver)
+        const {domain, owner, resolver, addr} = this.props;  
 
         let ownedBy = <div></div>
         if (owner != '') {
@@ -69,7 +70,9 @@ class RnsDomainDetailComponent extends React.Component {
         }
 
         let resolverCmp = <div></div>
-        if (resolver !== '') {
+        let addrText = "No resolver assigned";
+
+        if (resolver != '') {
             resolverCmp = <div className="domainResolver">
                                 <Select 
                                     value={this.getResolverOption(resolver)}
@@ -79,6 +82,33 @@ class RnsDomainDetailComponent extends React.Component {
                                     placeholder="No Resolver Asigned"
                                     onChange={(val) => {this.onChange(val)}} />
                             </div>
+            if (resolver != ADDRESS_EMPTY) {
+                if(addr != '') {
+                    addrText = addr
+                } else {
+                    addrText = "No address assigned in resolver"
+                }
+            }
+        }
+
+        let addrCmp = <div></div>
+        if(this.state.editingAddr) {
+            addrCmp = <div className="domainAddr">
+                            Addr: <input 
+                                        type="text"
+                                        className="txAddr"
+                                        placeholder="addr" />
+                        </div>
+        } else {
+            let txtMsg = ''
+            if ((resolver == '') || (resolver == ADDRESS_EMPTY)) {
+                txtMsg = 'No resolver assigned'
+            } else {
+                txtMsg = addr
+            }
+            addrCmp = <div className="domainAddr">
+                Addr: {txtMsg}
+            </div>
         }
 
         return (
@@ -88,6 +118,7 @@ class RnsDomainDetailComponent extends React.Component {
                 </div>
                 {ownedBy}
                 {resolverCmp}
+                {addrCmp}
             </div>
         );
     }
@@ -95,13 +126,12 @@ class RnsDomainDetailComponent extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log("NEW STATE IN RNS RESOLVER!")
-    console.log(state.rns.address)
     return { 
         domain: state.rns.domain,
         hash: state.rns.hash,
         owner: state.rns.owner,
         resolver: state.rns.resolver,
+        addr: state.rns.addr,
      };
   };
 

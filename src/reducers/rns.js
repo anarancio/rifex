@@ -4,7 +4,8 @@ import {
     RNS_DOMAIN_RESOLVER_CHECKED, 
     RNS_DOMAIN_SET_RESOLVER_DONE,
     RNS_DASHBOARD,
-    RNS_DOMAIN_DETAIL } from "../constants/action-types";
+    RNS_DOMAIN_DETAIL,
+    RNS_DOMAIN_ADDR_RECEIVED } from "../constants/action-types";
 
 const initialState = {
     pageDisplayed: RNS_DASHBOARD,
@@ -12,6 +13,7 @@ const initialState = {
     owner: '',
     hash: '',
     resolver: '',
+    addr: '',
 }
 
 const rns = (state = initialState, action) => {
@@ -24,6 +26,7 @@ const rns = (state = initialState, action) => {
               owner: action.domain.owner,
               hash: action.domain.hash,
               resolver: state.resolver,
+              addr: state.addr,
           };
       case RNS_DOMAIN_RESOLVER_CHECKED:
           return {
@@ -32,6 +35,7 @@ const rns = (state = initialState, action) => {
                 owner: state.owner,
                 hash: state.hash,
                 resolver: action.resolver,
+                addr: state.addr,
           }
       case RNS_DOMAIN_SET_RESOLVER_DONE:
           return {
@@ -40,7 +44,17 @@ const rns = (state = initialState, action) => {
             owner: state.owner,
             hash: state.hash,
             resolver: action.resolver,
+            addr: state.addr,
           }
+      case RNS_DOMAIN_ADDR_RECEIVED:
+        return {
+            pageDisplayed: state.pageDisplayed,
+            domain: state.domain,
+            owner: state.owner,
+            hash: state.hash,
+            resolver: state.resolver,
+            addr: action.addr,
+            }
       default:
         return state
     }

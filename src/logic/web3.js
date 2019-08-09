@@ -5,6 +5,7 @@ import namehash from 'eth-ens-namehash';
 
 import {saveWeb3Provider, updateRbtcBalance, checkRnsOwnerResult} from "../actions/web3"
 import rnsRegistryABI from "../abis/RNS";
+import rnsPublicResolverABI from "../abis/PublicResolver";
 
 const openWeb3 = createLogic({
   type: LOAD_WEB3,
@@ -12,9 +13,11 @@ const openWeb3 = createLogic({
       //TODO move the node url to a config file
     let web3 = new Web3(Web3.givenProvider || "http://localhost:9545");
     let rnsRegistryContract = new web3.eth.Contract(rnsRegistryABI, '0xa70Ed6026c0481D0d6Af2d907347Ba8aD397F461');
+    let rnsPublicResolverContract = new web3.eth.Contract(rnsPublicResolverABI, '0xA87832896f50Ff86F4f825570FC0Ca87360Fa6A4');
     dispatch(saveWeb3Provider(web3, {
         rns: {
-            registry: rnsRegistryContract
+            registry: rnsRegistryContract,
+            publicResolver: rnsPublicResolverContract
         }
     }));
     done();
