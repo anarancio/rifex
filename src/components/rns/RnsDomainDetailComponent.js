@@ -30,6 +30,11 @@ class RnsDomainDetailComponent extends React.Component {
 
         this.onChange = this.onChange.bind(this)
         this.getResolverOption = this.getResolverOption.bind(this)
+        this.onAddrClick = this.onAddrClick.bind(this)
+    }
+
+    onAddrClick() {
+        this.setState({editingAddr: true})
     }
 
     onChange(evt) {
@@ -84,7 +89,7 @@ class RnsDomainDetailComponent extends React.Component {
                             </div>
             if (resolver != ADDRESS_EMPTY) {
                 if(addr != '') {
-                    addrText = addr
+                    addrText = addr.substring(0, 10) + '...'
                 } else {
                     addrText = "No address assigned in resolver"
                 }
@@ -97,18 +102,22 @@ class RnsDomainDetailComponent extends React.Component {
                             Addr: <input 
                                         type="text"
                                         className="txAddr"
-                                        placeholder="addr" />
+                                        placeholder="addr" /><i class="fas fa-check-circle"></i><i class="fas fa-window-close"></i>
                         </div>
         } else {
             let txtMsg = ''
             if ((resolver == '') || (resolver == ADDRESS_EMPTY)) {
-                txtMsg = 'No resolver assigned'
+                txtMsg = <span>{'No resolver assigned'}</span>
+                addrCmp = <div className="domainAddr">
+                                Addr: {txtMsg}
+                            </div>
             } else {
-                txtMsg = addr
+                txtMsg = addr.substring(0, 10) + '...'
+                addrCmp = <div className="domainAddr">
+                                Addr: {txtMsg} <i class="fas fa-pen-square" onClick={this.onAddrClick}></i>
+                            </div>
             }
-            addrCmp = <div className="domainAddr">
-                Addr: {txtMsg}
-            </div>
+            
         }
 
         return (
