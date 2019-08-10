@@ -105,7 +105,7 @@ class RnsDomainDetailComponent extends React.Component {
         let resolverCmp = <div></div>
         let addrText = "No resolver assigned";
 
-        if (resolver != '') {
+        if (owner != ADDRESS_EMPTY && resolver != '') {
             resolverCmp = <div className="domainResolver">
                                 <Select 
                                     value={this.getResolverOption(resolver)}
@@ -125,27 +125,29 @@ class RnsDomainDetailComponent extends React.Component {
         }
 
         let addrCmp = <div></div>
-        if(this.state.editingAddr) {
-            addrCmp = <div className="domainAddr">
-                            <span className="bold">Addr:</span> <input 
-                                        type="text"
-                                        className="txAddr" 
-                                        onChange={this.handleAddrInputChange} /><i class="fas fa-check-circle" onClick={this.saveAddr}></i><i class="fas fa-window-close" onClick={this.cancelEdit}></i>
-                        </div>
-        } else {
-            let txtMsg = ''
-            if ((resolver == '') || (resolver == ADDRESS_EMPTY)) {
-                txtMsg = <span>{'No resolver assigned'}</span>
+        if(owner != ADDRESS_EMPTY) {
+            if(this.state.editingAddr) {
                 addrCmp = <div className="domainAddr">
-                                <span className="bold">Addr:</span> {txtMsg}
+                                <span className="bold">Addr:</span> <input 
+                                            type="text"
+                                            className="txAddr" 
+                                            onChange={this.handleAddrInputChange} /><i class="fas fa-check-circle" onClick={this.saveAddr}></i><i class="fas fa-window-close" onClick={this.cancelEdit}></i>
                             </div>
             } else {
-                txtMsg = addr.substring(0, 18) + '...'
-                addrCmp = <div className="domainAddr">
-                                <span className="bold">Addr:</span> {txtMsg} <i class="fas fa-pen-square" onClick={this.onAddrClick}></i>
-                            </div>
+                let txtMsg = ''
+                if ((resolver == '') || (resolver == ADDRESS_EMPTY)) {
+                    txtMsg = <span>{'No resolver assigned'}</span>
+                    addrCmp = <div className="domainAddr">
+                                    <span className="bold">Addr:</span> {txtMsg}
+                                </div>
+                } else {
+                    txtMsg = addr.substring(0, 18) + '...'
+                    addrCmp = <div className="domainAddr">
+                                    <span className="bold">Addr:</span> {txtMsg} <i class="fas fa-pen-square" onClick={this.onAddrClick}></i>
+                                </div>
+                }
+                
             }
-            
         }
 
         return (
