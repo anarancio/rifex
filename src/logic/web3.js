@@ -12,8 +12,8 @@ const openWeb3 = createLogic({
   process({getState, action}, dispatch, done) {
       //TODO move the node url to a config file
     let web3 = new Web3(Web3.givenProvider || "http://localhost:9545");
-    let rnsRegistryContract = new web3.eth.Contract(rnsRegistryABI, '0xa70Ed6026c0481D0d6Af2d907347Ba8aD397F461');
-    let rnsPublicResolverContract = new web3.eth.Contract(rnsPublicResolverABI, '0xA87832896f50Ff86F4f825570FC0Ca87360Fa6A4');
+    let rnsRegistryContract = new web3.eth.Contract(rnsRegistryABI, '0xb2687b0AABD310145424E6134561e8c08E3efC99');
+    let rnsPublicResolverContract = new web3.eth.Contract(rnsPublicResolverABI, '0x0545aFD4b36E7b8dBF7Bbf0Afc72bD5a362100C4');
     dispatch(saveWeb3Provider(web3, {
         rns: {
             registry: rnsRegistryContract,

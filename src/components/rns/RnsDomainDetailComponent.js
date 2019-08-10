@@ -31,10 +31,15 @@ class RnsDomainDetailComponent extends React.Component {
         this.onChange = this.onChange.bind(this)
         this.getResolverOption = this.getResolverOption.bind(this)
         this.onAddrClick = this.onAddrClick.bind(this)
+        this.cancelEdit = this.cancelEdit.bind(this)
     }
 
     onAddrClick() {
         this.setState({editingAddr: true})
+    }
+
+    cancelEdit() {
+        this.setState({editingAddr: false})
     }
 
     onChange(evt) {
@@ -102,7 +107,7 @@ class RnsDomainDetailComponent extends React.Component {
                             Addr: <input 
                                         type="text"
                                         className="txAddr"
-                                        placeholder="addr" /><i class="fas fa-check-circle"></i><i class="fas fa-window-close"></i>
+                                        placeholder="addr" /><i class="fas fa-check-circle"></i><i class="fas fa-window-close" onClick={this.cancelEdit}></i>
                         </div>
         } else {
             let txtMsg = ''
