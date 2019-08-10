@@ -125,6 +125,7 @@ class RnsDomainDetailComponent extends React.Component {
         }
 
         let addrCmp = <div></div>
+        let actionsCmps = <div></div>
         if(owner != ADDRESS_EMPTY) {
             if(this.state.editingAddr) {
                 addrCmp = <div className="domainAddr">
@@ -148,16 +149,39 @@ class RnsDomainDetailComponent extends React.Component {
                 }
                 
             }
+
+            actionsCmps = <div>
+                            <div className="button-group">
+                                <span>
+                                    <button className="btn">
+                                        <i class="fas fa-bacon"></i> 
+                                        Create Lumino Channel
+                                    </button>
+                                </span>
+                                <span>
+                                    <button className="btn">
+                                        <i class="fas fa-handshake"></i> 
+                                        Transfer Domain
+                                    </button>
+                                </span>
+                            </div>
+                            <button className="pay-btn">
+                                <i class="fas fa-bolt"></i> 
+                                Make Lumino Payment
+                            </button>
+                        </div>
         }
 
         return (
             <div className="RnsDomainDetailComponent">
                 <div className="domainName">
-                    {domain}
+                    {domain} <i class="far fa-heart"></i> <i class="fas fa-bolt"></i>
                 </div>
                 {ownedBy}
                 {resolverCmp}
                 {addrCmp}
+
+                {actionsCmps}
             </div>
         );
     }

@@ -84,3 +84,45 @@
     margin-left: 5px;
     color: #C34A36;
 }
+
+.RnsDomainDetailComponent .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.RnsDomainDetailComponent .button-group .btn {
+    background-color: green;
+    color: white;
+    width: 90%;
+    font-size: 20px;
+    border: 0;
+    border-radius: 10px;
+    padding: 5px;
+    font-weight: 500;
+}
+
+.RnsDomainDetailComponent .button-group .btn .fas {
+    margin-right: 10px;
+}
+
+.RnsDomainDetailComponent .pay-btn {
+    background-color: green;
+    color: white;
+    width: 85%;
+    font-size: 20px;
+    border: 0;
+    border-radius: 10px;
+    padding: 5px;
+    font-weight: 500;
+    height: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.RnsDomainDetailComponent .pay-btn .fas {
+    margin-right: 10px;
+}
