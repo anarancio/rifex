@@ -1,6 +1,15 @@
 import { createLogic } from 'redux-logic';
-import { RNS_CHECK_OWNER_RESULT, RNS_DOMAIN_SET_RESOLVER } from "../constants/action-types";
-import {rnsDomainResolverChecked, rnsSetDomainResolverDone, rnsDomainAddrReceived} from "../actions/rns"
+import { 
+    RNS_CHECK_OWNER_RESULT, 
+    RNS_DOMAIN_SET_RESOLVER, 
+    RNS_DOMAIN_SET_ADDR 
+} from "../constants/action-types";
+import {
+    rnsDomainResolverChecked, 
+    rnsSetDomainResolverDone, 
+    rnsDomainAddrReceived, 
+    rnsSetRnsAddrDone
+} from "../actions/rns"
 
 const getRnsResolver = createLogic({
     type: RNS_CHECK_OWNER_RESULT,
@@ -37,7 +46,26 @@ const setRnsResolver = createLogic({
     }
 });
 
+const setRnsAddr = createLogic({
+    type: RNS_DOMAIN_SET_ADDR,
+    process({getState, action}, dispatch, done) {
+        (async () => {
+            console.log("setRNS Addr")
+            console.log(action.data.address)
+            console.log(action.data.hash)
+            let contract = getState().web3.contracts.rns.publicResolver;
+
+            //TODO move the send transaction to a common function/module who manage the wallet
+            let result = await contract.methods.setAddr(action.data.hash, action.data.address).send({from: '0xEBb615A2191eAde8539890fE20495855a29883D6'})
+
+            dispatch(rnsSetRnsAddrDone(action.data.address))
+            done()
+        })();
+    }
+});
+
 export default [
     getRnsResolver,
-    setRnsResolver
+    setRnsResolver,
+    setRnsAddr
 ];

@@ -61,3 +61,26 @@
 .resolver-select .resolver-select__single-value {
     color: white;
 }
+
+.RnsDomainDetailComponent .domainAddr {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 15px;
+    text-align: left;
+}
+
+.RnsDomainDetailComponent .domainAddr .fa-pen-square {
+    margin-left: 5px;
+    color: #2C73D2;
+}
+
+.RnsDomainDetailComponent .domainAddr .fa-check-circle {
+    margin-left: 5px;
+    color: #00C9A7;
+}
+
+.RnsDomainDetailComponent .domainAddr .fa-window-close {
+    margin-left: 5px;
+    color: #C34A36;
+}

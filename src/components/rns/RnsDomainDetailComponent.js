@@ -4,7 +4,7 @@ import Select from 'react-select'
 
 
 import {ADDRESS_EMPTY, RNS_RESOLVER, RNS_MULTI_CRYPTO} from '../../constants/global'
-import {rnsSetDomainResolver} from '../../actions/rns'
+import {rnsSetDomainResolver, rnsSetAddr} from '../../actions/rns'
 
 import './RnsDomainDetailComponent.css';
 import { throwStatement } from '@babel/types';
@@ -25,13 +25,20 @@ class RnsDomainDetailComponent extends React.Component {
         super(props);
 
         this.state = {
-            editingAddr: false
+            editingAddr: false,
+            addrValue: ''
         };
 
         this.onChange = this.onChange.bind(this)
         this.getResolverOption = this.getResolverOption.bind(this)
         this.onAddrClick = this.onAddrClick.bind(this)
         this.cancelEdit = this.cancelEdit.bind(this)
+        this.saveAddr = this.saveAddr.bind(this)
+        this.handleAddrInputChange = this.handleAddrInputChange.bind(this)
+    }
+
+    handleAddrInputChange(event) {
+        this.setState({addrValue: event.target.value});
     }
 
     onAddrClick() {
@@ -39,7 +46,23 @@ class RnsDomainDetailComponent extends React.Component {
     }
 
     cancelEdit() {
-        this.setState({editingAddr: false})
+        this.setState({
+            editingAddr: false,
+            addrValue: ''
+        })
+    }
+
+    saveAddr() {
+        this.setState({
+            editingAddr: false, 
+            addrValue: ''
+        })
+        
+        this.props.setAddr({
+            domain: this.props.domain,
+            hash: this.props.hash,
+            address: this.state.addrValue
+        })
     }
 
     onChange(evt) {
@@ -94,7 +117,7 @@ class RnsDomainDetailComponent extends React.Component {
                             </div>
             if (resolver != ADDRESS_EMPTY) {
                 if(addr != '') {
-                    addrText = addr.substring(0, 10) + '...'
+                    addrText = addr.substring(0, 18) + '...'
                 } else {
                     addrText = "No address assigned in resolver"
                 }
@@ -104,22 +127,22 @@ class RnsDomainDetailComponent extends React.Component {
         let addrCmp = <div></div>
         if(this.state.editingAddr) {
             addrCmp = <div className="domainAddr">
-                            Addr: <input 
+                            <span className="bold">Addr:</span> <input 
                                         type="text"
-                                        className="txAddr"
-                                        placeholder="addr" /><i class="fas fa-check-circle"></i><i class="fas fa-window-close" onClick={this.cancelEdit}></i>
+                                        className="txAddr" 
+                                        onChange={this.handleAddrInputChange} /><i class="fas fa-check-circle" onClick={this.saveAddr}></i><i class="fas fa-window-close" onClick={this.cancelEdit}></i>
                         </div>
         } else {
             let txtMsg = ''
             if ((resolver == '') || (resolver == ADDRESS_EMPTY)) {
                 txtMsg = <span>{'No resolver assigned'}</span>
                 addrCmp = <div className="domainAddr">
-                                Addr: {txtMsg}
+                                <span className="bold">Addr:</span> {txtMsg}
                             </div>
             } else {
-                txtMsg = addr.substring(0, 10) + '...'
+                txtMsg = addr.substring(0, 18) + '...'
                 addrCmp = <div className="domainAddr">
-                                Addr: {txtMsg} <i class="fas fa-pen-square" onClick={this.onAddrClick}></i>
+                                <span className="bold">Addr:</span> {txtMsg} <i class="fas fa-pen-square" onClick={this.onAddrClick}></i>
                             </div>
             }
             
@@ -152,6 +175,7 @@ const mapStateToProps = state => {
 function mapDispatchToProps(dispatch) {
     return {
         setDomainResolver: (data) => dispatch(rnsSetDomainResolver(data)),
+        setAddr: (data) => dispatch(rnsSetAddr(data)),
     };
   }
 
